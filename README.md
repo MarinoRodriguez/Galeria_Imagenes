@@ -56,6 +56,8 @@ Para ejecutar el proyecto, solo se necesita un navegador web y conexión a inter
 - Posibilidad de editar información de las imágenes.
 - Filtros para buscar imágenes por título o fecha.
 - Categorización de imágenes.
+- seleccionar varias imagenes a la vez para eliminar
+
 
 ## Contribución
 
