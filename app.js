@@ -201,7 +201,22 @@ class ImageGalleryApp {
     // Oculta el contenedor de información y muestra el de la galería
     this.galleryContainer.style.display = 'block';
     this.infoContainer.style.display = 'none';
-    const images = this.storageService.getAllImages();
+    let images = this.storageService.getAllImages();
+    
+    // Ordenar las imágenes por fecha, las más recientes primero
+    images.sort((a, b) => {
+      // Si ambas imágenes tienen fecha, compararlas normalmente
+      if (a.fecha && b.fecha) {
+        return new Date(b.fecha) - new Date(a.fecha);
+      }
+      // Si solo a tiene fecha, ponerla primero
+      if (a.fecha) return -1;
+      // Si solo b tiene fecha, ponerla primero
+      if (b.fecha) return 1;
+      // Si ninguna tiene fecha, mantener el orden original
+      return 0;
+    });
+
     this.galleryContainer.innerHTML = `
       <h2 class="text-center my-4">Galería de Imágenes</h2>
       <div class="row" id="imageContainer"></div>
@@ -212,6 +227,8 @@ class ImageGalleryApp {
         const imageElement = this.createImageElement(image);
         imageContainer.appendChild(imageElement);
       });
+    } else {
+      imageContainer.innerHTML = '<p class="text-center">No hay imágenes en la galería.</p>';
     }
   }
 
@@ -239,7 +256,23 @@ class ImageGalleryApp {
     document.getElementById('modalDetailImage').src = image.data;
     document.getElementById('modalImageTitle').textContent = image.title;
     document.getElementById('modalImageDescription').textContent = image.description;
-    document.getElementById('modalImageDate').textContent = `Subida el: ${new Date(image.date).toLocaleString()}`;
+    
+    // Formatear la fecha de subida
+    const uploadDate = new Date(image.fecha);
+    if (!isNaN(uploadDate.getTime())) {  // Verificamos si la fecha es válida
+      const formattedDate = uploadDate.toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+      });
+      document.getElementById('modalImageDate').textContent = `Subida el: ${formattedDate}`;
+    } else {
+      document.getElementById('modalImageDate').textContent = 'Fecha de subida no disponible';
+    }
+    
     document.getElementById('modalDeleteButton').onclick = () => this.deleteImage(image.id);
     modal.show();
   }
@@ -276,16 +309,23 @@ class ImageGalleryApp {
   }
 
   showInfo() {
-    // Muestra información sobre la pagina
+    // Muestra información sobre la página y el creador
     // Oculta la galería y muestra el contenedor de información
     this.galleryContainer.style.display = 'none';
     this.infoContainer.style.display = 'block';
     this.infoContainer.innerHTML = `
-      <h2 class="text-center my-4">Información de la Galería</h2>
+      <h2 class="text-center my-4">Información sobre la Galería de Imágenes</h2>
       <div class="container">
-        <p>Esta es una galería de imágenes interactiva que te permite:</p>
+        <h3>Información sobre el sitio</h3>
+        <p>Este sitio web fue creado como parte del taller de Programación Web impartido por el Programa de Educación Continua en el ITLA, bajo la guía del profesor Guillermo Hernandez. El propósito de este proyecto es ofrecer una práctica en el desarrollo de aplicaciones web utilizando tecnologías modernas como HTML, CSS, JavaScript y Bootstrap.</p>
+        
+        <h3>Sobre mí</h3>
+        <p>Mi nombre es Marino Rodriguez, soy un entusiasta del desarrollo web y actualmente estoy profundizando mis conocimientos en programación web a través de este taller. Este proyecto es un reflejo de mis aprendizajes y mi pasión por el diseño y desarrollo de aplicaciones web.</p>
+        
+        <h3>Características de la Galería</h3>
+        <p>Esta galería de imágenes interactiva te permite:</p>
         <ul>
-          <li>Ver una colección de imágenes subidas por los usuarios</li>
+          <li>Ver la colección de imágenes subidas previamente por el usuario</li>
           <li>Subir tus propias imágenes</li>
           <li>Ver imágenes en detalle</li>
           <li>Eliminar imágenes individualmente</li>

@@ -138,6 +138,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    font-family: 'Berlin Sans FB', Arial, sans-serif;
 }
 
 .container {
