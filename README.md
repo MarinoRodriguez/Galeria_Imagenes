@@ -16,6 +16,10 @@ Para ejecutar el proyecto, solo se necesita un navegador web y conexión a inter
 
 ## Instalación
 
+1. accede al siguiente enlace: https://galeria-imagenes-coral.vercel.app/
+
+## O...
+
 1. Clona este repositorio en tu máquina local.
    ```bash
    git clone https://github.com/MarinoRodriguez/Galeria_Imagenes.git
