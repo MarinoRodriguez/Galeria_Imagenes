@@ -31,8 +31,7 @@ Para ejecutar el proyecto, solo se necesita un navegador web y conexión a inter
 
 ```bash
 .
-├── styles
-│ └── styles.css
+├── styles.css
 ├── app.js
 ├── index.html
 ├── README.md
