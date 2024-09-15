@@ -79,8 +79,3 @@ Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para obt
 ## Autor
 
 Marino Rodriguez
-
-## Agradecimientos
-
-- Profesor Guillermo Hernandez
-- Programa de Educación Continua del ITLA
