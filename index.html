@@ -5,21 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galería de Imágenes</title>
   <!-- Bootstrap CSS para estilos responsivos -->
+  <!-- Se utiliza Bootstrap para proporcionar un diseño responsivo y consistente en diferentes dispositivos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Estilos personalizados -->
+  <!-- Se incluye un archivo CSS personalizado para dar diseño especializado en la pagina -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <!-- Navbar responsiva -->
+  <!-- Se implementa una barra de navegación responsiva que se adapta a diferentes tamaños de pantalla -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="#">Galería de Imágenes</a>
       <!-- Botón para abrir el menú lateral en pantallas pequeñas -->
+      <!-- Este botón aparece en dispositivos móviles para acceder al menú -->
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <!-- Menú desplegable para pantallas medianas y grandes -->
+      <!-- Este menú se muestra en pantallas más grandes -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
@@ -37,6 +41,7 @@
   </nav>
 
   <!-- Menú lateral (off-canvas) para pantallas pequeñas -->
+  <!-- Este menú se despliega desde el lado derecho en dispositivos móviles -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menú</h5>
@@ -58,11 +63,13 @@
   </div>
 
   <!-- Contenedor principal de la aplicación -->
+  <!-- Aquí se renderizará dinámicamente el contenido principal de la aplicación -->
   <div class="container mt-4">
     <div id="app"></div>
   </div>
 
   <!-- Modal para ver imagen en detalle -->
+  <!-- Este modal se utiliza para mostrar una imagen ampliada con sus detalles -->
   <div class="modal fade" id="imageDetailModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -84,6 +91,7 @@
   </div>
 
   <!-- Modal para subir imagen -->
+  <!-- Este modal proporciona una interfaz para que los usuarios suban nuevas imágenes -->
   <div class="modal fade" id="uploadModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -93,16 +101,19 @@
         </div>
         <div class="modal-body">
           <!-- Área para arrastrar y soltar imágenes -->
+          <!-- Permite a los usuarios arrastrar y soltar imágenes para subirlas -->
           <div id="dropArea" class="drop-area">
             <p>Arrastra y suelta una imagen aquí o</p>
             <button type="button" class="btn btn-primary" id="selectImageBtn">Seleccionar imagen</button>
             <input type="file" id="fileInput" accept="image/*" style="display: none;">
           </div>
           <!-- Vista previa de la imagen seleccionada -->
+          <!-- Muestra una vista previa de la imagen antes de subirla -->
           <div id="imagePreview" style="display: none;">
             <img id="previewImage" class="img-fluid mt-3" src="" alt="Vista previa">
           </div>
           <!-- Formulario para detalles de la imagen -->
+          <!-- Permite al usuario ingresar título y descripción para la imagen -->
           <form id="imageDetailsForm" style="display: none;">
             <div class="mb-3">
               <label for="imageTitle" class="form-label">Título</label>
@@ -123,13 +134,17 @@
   </div>
 
   <!-- SweetAlert2 para notificaciones mejoradas -->
+  <!-- Se utiliza SweetAlert2 para mostrar notificaciones más atractivas y personalizables -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Bootstrap JS para funcionalidades de Bootstrap -->
+  <!-- Se incluye el JavaScript de Bootstrap como requisito del framework -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Script principal de la aplicación -->
+  <!-- Este es el archivo JavaScript principal que contiene la lógica de la aplicación -->
   <script src="app.js"></script>
 
   <!-- Footer -->
+  <!-- Se incluye un pie de página para mostrar información de derechos de autor -->
   <footer class="footer mt-auto py-3 bg-dark text-white">
     <div class="container text-center">
       <span>&copy; 2023 Galería de Imágenes. Todos los derechos reservados.</span>

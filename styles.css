@@ -1,160 +1,179 @@
-/* General */
+/* Estilos generales para la galería */
 .gallery {
     border: 1px solid #ccc;
     margin-bottom: 15px;
     position: relative;
-  }
-  
-  .gallery:hover {
+}
+
+/* Efecto hover para resaltar la imagen seleccionada */
+.gallery:hover {
     border: 1px solid #777;
-  }
-  
-  .gallery img {
+}
+
+/* Asegura que las imágenes se ajusten correctamente dentro de su contenedor */
+.gallery img {
     width: 100%;
     height: auto;
-  }
-  
-  .desc {
+}
+
+/* Estilo para la descripción de la imagen */
+.desc {
     padding: 15px;
     text-align: center;
-  }
-  
-  /* Elimina estos estilos */
-  .gallery.selected,
-  .gallery.selected::before,
-  .card-img-overlay,
-  .image-checkbox {
-    display: none;
-  }
+}
 
-  /* Mantén o modifica estos estilos según sea necesario */
-  .card {
+/* Se eliminan estilos obsoletos para mejorar la limpieza del código */
+.gallery.selected,
+.gallery.selected::before,
+.card-img-overlay,
+.image-checkbox {
+    display: none;
+}
+
+/* Estilos para las tarjetas de imágenes */
+.card {
     height: 300px;
     cursor: pointer;
-    transition: transform 0.2s;
-  }
+    transition: transform 0.2s; /* Añade una transición suave al hacer hover */
+}
 
-  .card:hover {
+/* Efecto de escala al hacer hover sobre la tarjeta */
+.card:hover {
     transform: scale(1.05);
-  }
+}
 
-  .card-img-top {
+/* Asegura que todas las imágenes tengan el mismo tamaño y estén centradas */
+.card-img-top {
     height: 200px;
     object-fit: cover;
     object-position: center;
-  }
+}
 
-  .card-body {
+/* Previene que el contenido se desborde de la tarjeta */
+.card-body {
     overflow: hidden;
-  }
+}
 
-  .card-title {
+/* Trunca el título si es demasiado largo */
+.card-title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+}
 
-  @media (max-width: 767.98px) {
+/* Ajusta el ancho del menú lateral en dispositivos móviles */
+@media (max-width: 767.98px) {
     .offcanvas {
-      width: 250px; /* Ajusta el ancho según tus preferencias */
+        width: 250px;
     }
-  }
+}
 
-  .gallery-item {
+/* Estilos para los elementos de la galería */
+.gallery-item {
     position: relative;
     overflow: hidden;
     cursor: pointer;
-  }
+}
 
-  .gallery-item img {
+/* Efecto de zoom suave al hacer hover sobre la imagen */
+.gallery-item img {
     transition: transform 0.3s ease;
-  }
+}
 
-  .gallery-item:hover img {
+.gallery-item:hover img {
     transform: scale(1.1);
-  }
+}
 
-  .gallery-item .delete-btn {
+/* Muestra el botón de eliminar solo al hacer hover */
+.gallery-item .delete-btn {
     position: absolute;
     top: 5px;
     right: 5px;
     display: none;
-  }
+}
 
-  .gallery-item:hover .delete-btn {
+.gallery-item:hover .delete-btn {
     display: block;
-  }
+}
 
-  .drop-area {
+/* Estilo para el área de arrastrar y soltar */
+.drop-area {
     border: 2px dashed #ccc;
     border-radius: 20px;
     width: 100%;
     margin: 0 auto;
     padding: 20px;
     text-align: center;
-  }
+}
 
-  .drop-area.dragover {
+/* Efecto visual cuando se arrastra un archivo sobre el área */
+.drop-area.dragover {
     background-color: #f0f0f0;
     border-color: #000;
-  }
+}
 
-  @media (max-width: 768px) {
+/* Oculta el menú de navegación en dispositivos móviles */
+@media (max-width: 768px) {
     .navbar-collapse {
-      display: none !important;
+        display: none !important;
     }
 
     .offcanvas {
-      width: 250px; /* Ajusta el ancho según tus preferencias */
+        width: 250px;
     }
-  }
+}
 
-  @media (min-width: 769px) {
+/* Oculta el botón de toggle en pantallas grandes */
+@media (min-width: 769px) {
     .navbar-toggler {
-      display: none !important;
+        display: none !important;
     }
-  }
+}
 
-  html, body {
+/* Asegura que el footer siempre esté en la parte inferior */
+html, body {
     height: 100%;
-  }
+}
 
-  body {
+body {
     display: flex;
     flex-direction: column;
-  }
+}
 
-  .container {
+.container {
     flex: 1 0 auto;
-  }
+}
 
-  .footer {
+.footer {
     flex-shrink: 0;
-  }
+}
 
+/* Estilos para el overlay de cambio de imagen */
 .change-image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  cursor: pointer;
-  pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    pointer-events: none;
 }
 
+/* Activa el overlay cuando se necesita */
 .change-image-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 
+/* Estilo para el texto dentro del overlay */
 .change-image-overlay span {
-  font-size: 1.2em;
-  font-weight: bold;
+    font-size: 1.2em;
+    font-weight: bold;
 }
