@@ -8,6 +8,7 @@ Este es un proyecto de una aplicación web de galería de imágenes donde los us
 - **Ver imágenes**: Se pueden ver las imágenes en detalle.
 - **Eliminar imágenes**: Las imágenes pueden eliminarse individualmente.
 - **Almacenamiento local**: Las imágenes se almacenan localmente en el navegador utilizando `localStorage`.
+- **Backend API opcional**: Incluye una API en C# / ASP.NET Core para cargar, listar, descargar y eliminar imágenes o videos como contenido estático.
 - **Diseño responsivo**: La aplicación es totalmente responsiva y está optimizada para móviles y computadoras.
 
 ## Requisitos
@@ -38,16 +39,47 @@ Para ejecutar el proyecto, solo se necesita un navegador web y conexión a inter
 ├── styles.css
 ├── app.js
 ├── index.html
+├── Backend/
+│   ├── Program.cs
+│   ├── GaleriaImagenes.Api.csproj
+│   ├── Models/
+│   ├── Storage/
+│   └── wwwroot/uploads/
 ├── README.md
 └── LICENSE
 
 
 ```
+## Backend API en C#
+
+El proyecto ahora incluye un backend opcional en `Backend/` construido con ASP.NET Core. La API guarda los archivos en `Backend/wwwroot/uploads` para servirlos como contenido estático y persiste sus metadatos en `Backend/App_Data/media.json`.
+
+### Ejecutar la API
+
+```bash
+cd Backend
+dotnet run
+```
+
+Por defecto queda disponible en `http://localhost:5000`.
+
+### Endpoints principales
+
+| Método | Ruta | Descripción |
+| --- | --- | --- |
+| `GET` | `/api/health` | Verifica que la API esté activa. |
+| `GET` | `/api/media` | Lista imágenes y videos cargados. |
+| `GET` | `/api/media/{id}` | Obtiene un elemento por id. |
+| `POST` | `/api/media` | Carga un archivo `multipart/form-data` con `file`, `title` y `description`. |
+| `GET` | `/api/media/{id}/download` | Descarga el archivo original. |
+| `DELETE` | `/api/media/{id}` | Elimina metadatos y archivo físico. |
+
 ## Tecnologías Utilizadas
 
 - **HTML5**: Estructura y maquetación de la aplicación.
 - **CSS3**: Estilos y diseño responsivo.
 - **JavaScript (ES6+)**: Lógica de interacción y manejo del `localStorage`.
+- **C# / ASP.NET Core 8**: Backend API opcional para administrar imágenes y videos.
 - **Bootstrap 5**: Framework CSS para diseño responsivo.
 - **SweetAlert2**: Librería para notificaciones mejoradas.
 
